@@ -1,0 +1,182 @@
+1.Write a program to accept 3 numbers that represent the sides of a triangle. Check if they can form a triangle or not.
+Sample input 1
+2 0 1
+Sample output 1
+NO
+2.Problem Statement:
+You are given a number N and a range defined by two integers, start and end. Your task is to print all the multiples of N that fall within this range, inclusive of both start and end.
+sample input 
+6  5 10
+sample output 
+30 36 42 48 54 60
+3.Write a program to accept 4 numbers as input and print the greatest of the 4 numbers.
+Sample input 1
+1 2 3 4
+Sample output 1
+4
+4.Write a program to accept 4 numbers as input and sequence them in the ascending order.
+You may assume that the numbers will not be equal.
+Sample input 1
+234 237 235 232
+sample output 1
+232<234<235<237
+5.Given Int X to print numbers till 0 if x is -ve else to print till x from 0 if x is +ve.
+6.Problem Statement:
+You are given a single character. Write a program that determines whether the character is an alphabet (letter), a digit, or a special character
+Sample input 1
+A
+Sample output 1
+alphabet
+7.Problem Statements:
+Sekar wants to become fit for which he decided to walk to the office and return home by walking. It is known that Sekar's office is X km away from his home.
+If his office is open on 5 days in a week, find the number of kilometers Sekar travels through office trips in a week.
+Input format
+First line will contain T, number of test cases. Then the test cases follow.
+Each test case contains of a single line consisting of single integer x.
+Output format
+For each test case, output the number of kilometers chef travels through office trips in a week.
+Constraints
+1≤t≤10
+1 ≤x≤10
+Sample Input 
+4
+ 1
+ 3
+ 7
+ 10  
+Sample Output
+    10
+    30
+    70 
+    100
+
+8.Problem
+Vipin wants to appear in a competitive exam. To take the exam, there are following requirements:
+Minimum age limit is X (i.e. Age should be greater than or equal to X).
+Age should be strictly less than Y.
+Vipin's current Age is A. Find whether he is currently eligible to take the exam or not.
+Input Format
+First line will contain  T, number of test cases. Then the test cases follow.
+Each test case consists of a single line of input, containing three integers X,Y, and A as mentioned in the statement.
+Output Format
+For each test case, output YES if Vipin is eligible to give the exam, NO otherwise.
+Sample :
+Input
+5
+21 34 30
+25 31 31
+22 29 25
+20 40 15
+28 29 28
+
+Output
+YES
+NO
+YES
+NO
+YES
+9.Given positive integer x. Write a program to print a Binary number of x.
+BinaryNum(23) → 10111
+BinaryNum(124) → 1111100
+BinaryNum(234) → 11101010
+10.Given an integer N, return true if N is a power of two else return false.
+An integer N is a power of two if an integer X exists such as N==2powX.
+Example 1:
+Input: N=1 			Output: true (2pow0==1)
+Example 2:
+Input: N=16		Output: true (2pow4==16)
+Example 3:
+Input: N=18		Output: false
+
+11.We use the integers a, b, and n  to create the following series:
+(a+2^0 *b),(a+2^0 *b+2^1*b) , (a+2^0 *b+2^1*b +2^2*b), …… (a+2^0 *b+2^1*b+2^2*b+....+2^n-1  * b)  
+You are given a, b, and n. For given a, b, and n print the series of numbers.
+Constraint:
+0<=a,b<=50
+0<=n<=15
+Sample Input					Sample Output
+5 3 5 								8 14 26 50 98
+12.Print following Pattern if input = 5
+*****
+*****
+*****
+*****
+*****
+13.Print following Pattern if input = 5
+11111
+22222
+33333
+44444
+55555
+14.Print following Pattern if input = 5
+ABCDE
+ABCDE
+ABCDE
+ABCDE
+ABCDE
+15.Print following Pattern if input = 5
+       1
+      12
+     123
+    1234
+   12345
+16.Print following Pattern if input = 5
+*****
+*   *
+*   *
+*   *
+*****
+17.Print following Pattern if input = 5
+1   5
+ 2 4
+  3
+ 2 4
+1   5
+18.Print following Pattern if input = 5
+1
+2 1
+3 2 1
+4 3 2 1
+5 4 3 2 1
+19.Print following Pattern if input = 5
+5432*
+543*1
+54*21
+5*321
+*4321
+20.Print following Pattern if input = 5
+   1
+
+   123
+
+  12345
+
+ 1234567
+
+123456789
+
+ 1234567
+
+  12345
+
+   123
+
+   1
+21.Print following Pattern if input = 5
+ 1   2 3  4  5
+ 10  9 8  7  6
+ 11 12 13 14 15
+ 20 19 18 17 16
+ 21 22 23 24 25
+
+22.Print following Pattern if input = 5
+
+1 1 1 1 1 1 1 1 1
+1 2 2 2 2 2 2 2 1
+1 2 3 3 3 3 3 2 1
+1 2 3 4 4 4 3 2 1
+1 2 3 4 5 4 3 2 1
+1 2 3 4 4 4 3 2 1
+1 2 3 3 3 3 3 2 1
+1 2 2 2 2 2 2 2 1
+1 1 1 1 1 1 1 1 1
