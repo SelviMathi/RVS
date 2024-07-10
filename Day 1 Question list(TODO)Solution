@@ -1,0 +1,124 @@
+1.Factorial of a number with /without recursion
+#include <stdio.h>
+int fact(int val)
+{
+    if(val<=1)
+    return 1;
+    else
+    return val*fact(val-1);
+}
+int main()
+{
+    int num;
+    scanf("%d",&num);
+    printf("%d",fact(num));
+    return 0;
+}
+
+2.Fibonacci series until limit
+#include <stdio.h>
+
+int fibonacci(int n) {
+   if(n == 0)
+      return 0;
+   else if(n == 1)
+      return 1;
+   else
+      return (fibonacci(n-1) + fibonacci(n-2));
+}
+
+int main() {
+   int num;
+   scanf("%d", &num);
+   for (int i = 0; i < num; i++) 
+      printf("%d ", fibonacci(i));
+     return 0;
+}
+3.Nth digit in Fibonacci series
+#include <stdio.h>
+
+int fibonacci(int n) {
+   if(n == 0)
+      return 0;
+   else if(n == 1)
+      return 1;
+   else
+      return (fibonacci(n-1) + fibonacci(n-2));
+}
+
+int main() {
+   int num;
+   scanf("%d", &num);
+   printf("%d ", fibonacci(num-1));
+     return 0;
+}
+4.Sum of Fibonacci series
+#include <stdio.h>
+
+int fibonacci(int n) {
+    if(n == 0)
+        return 0;
+    else if(n == 1)
+        return 1;
+    else
+        return (fibonacci(n-1) + fibonacci(n-2));
+}
+
+int main() {
+    int num, sum = 0;
+    scanf("%d", &num);
+    for (int i = 0; i < num; i++) 
+        sum += fibonacci(i);
+    printf("%d\n", sum);
+    return 0;
+}
+
+5.Armstrong
+#include <stdio.h>
+#include <math.h>
+ 
+void main()
+{
+    int num, cod=0, sum=0,temp;
+    scanf("%d", &num);
+    temp = num;
+    int number = num;
+    while(num>0)  
+    {
+        num = num/10;                                   
+        cod++;      // count of digits n
+    }
+    while (temp>0)	  
+    {
+        sum=sum+ pow((temp%10), cod);
+        temp = temp / 10;
+    }
+    (sum == number)?printf ("Armstrong number"):printf ("Not an Armstrong number");
+}
+
+6.Palindrome
+#include <stdio.h>
+int isPalindrome(int n,int rev)
+{
+    if (n==0)
+        return rev;
+    rev = rev * 10 + n % 10;
+    isPalindrome(n/10,rev);
+}
+
+int main()
+{
+    int num,res,rev=0;
+    scanf("%d",&num);
+    res = isPalindrome(num,rev); 
+    (res==num)?printf("Palindrome number"):printf("Not a palindrome number");
+    return 0;
+}
+7.Prime
+8.M pattern
+9.12345
+   2345
+    345
+     45
+      5
+10.Sand clock
