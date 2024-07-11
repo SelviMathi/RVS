@@ -46,10 +46,54 @@ printf("%d",min);
 }
 
 4.Write a  Program to print all the repeated elements in a sorted array.
+
+
+#include<stdio.h>
+void main()
+{
+int noe;
+scanf("%d ",&noe);
+int arr[noe];
+for(int count=0;count<noe;count++)
+    scanf("%d",&arr[count]);
+
+for(int count=0;count<noe;count++)
+{
+  for (int j = count + 1; j < noe; j++) 
+    {
+        if(arr[count]==arr[j])
+     printf("%d ",arr[count]);
+    }
+}
+}
+
 5.Write a program to search an element in the given array and print the searched elements index. If no such elements were found print -1
+#include<stdio.h>
+int main(){
+    int noe,search,count;
+    scanf("%d",&noe);
+    int arr[noe];
+    for(count=0;count<noe;count++)
+        scanf("%d",&arr[count]);
+
+    scanf("%d",&search);
+
+   for(count=0;count<noe;count++)
+   {
+       if(search==arr[count])
+       {
+         printf("%d",count);
+         break;
+       }
+        else if(count==noe-1)
+        printf("-1");
+   }
+}
+
 6.You are given an array of 0s and 1s in random order. Segregate 0s on left side and 1s on right side of the array . 
 Input array   =  [0, 1, 0, 1, 0, 0, 1, 1, 1, 0] 
 Output array =  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1] 
+
 7.Write a program  to replace every element in an array with the sum of its right side elements
 8.Write a program  to reverse the array elements
 9.Write a program  to insert the value at given position in the array.
