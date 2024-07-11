@@ -1,6 +1,50 @@
 1.Write a program to accept N values into an integer array and display the contents of the array in the reverse order.
+#include<stdio.h>
+void main()
+{
+int noe;
+scanf("%d ",&noe);
+int arr[noe];
+for(int count=0;count<noe;count++)
+    scanf("%d",arr[count]);
+for(int count=0;count<=noe;count++)
+    printf("%d ",arr[count]);
+}
+
 2.Write a  program to count the number of 0s and 1s in an array that is in random order. You may assume that the array consists of only 0s and 1s.
+
+#include<stdio.h>
+int main()
+{
+    int noe;
+    scanf("%d",&noe);
+    int arr[noe],coz=0;
+    for(int count=0;count<noe;count++)
+    {
+    scanf("%d",arr[noe]);
+    if(arr[noe]==0) coz++;
+    }
+    printf("0:%d 1:%d",coz,noe-coz);
+}
+
 3. Write a  program to print the count of the elements in an array whose values are lesser than a key element in an unsorted array.
+#include<stdio.h>
+void main()
+{
+int noe,key,min=0;
+scanf("%d ",&noe);
+int arr[noe];
+for(int count=0;count<noe;count++)
+    scanf("%d",arr[count]);
+scanf("%d",&key);
+for(int count=0;count<noe;count++)
+{
+  if(arr[count]<key)
+       min++;
+}
+printf("%d",min);
+}
+
 4.Write a  Program to print all the repeated elements in a sorted array.
 5.Write a program to search an element in the given array and print the searched elements index. If no such elements were found print -1
 6.You are given an array of 0s and 1s in random order. Segregate 0s on left side and 1s on right side of the array . 
