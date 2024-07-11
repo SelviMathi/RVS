@@ -93,9 +93,76 @@ int main(){
 6.You are given an array of 0s and 1s in random order. Segregate 0s on left side and 1s on right side of the array . 
 Input array   =  [0, 1, 0, 1, 0, 0, 1, 1, 1, 0] 
 Output array =  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1] 
+#include<stdio.h>  
+int main()  
+{  
+    int noe;  
+    scanf("%d", &noe);  
+    int arr[noe];  
+    for(int i = 0; i < noe; i++)  
+        scanf("%d", &arr[i]);  
+    for(int i = 0; i < noe; i++)  
+    {  
+        int min = arr[i];  
+        for(int j = i + 1; j < noe; j++)  
+        {  
+            if(arr[j] < min)  
+            {  
+                int temp = arr[j];  
+                arr[j] = arr[i];  
+                arr[i] = temp;  
+            }  
+        }  
+    }  
+    for(int i = 0; i < noe; i++)  
+    {  
+        printf("%d ", arr[i]);  
+    }  
+}  
 
 7.Write a program  to replace every element in an array with the sum of its right side elements
+#include<stdio.h>
+int main()
+{
+    int N, index, sum=0;
+    scanf("%d",&N);
+    int arr[N];
+    for(index=0;index<N;index++)
+{       scanf("%d",&arr[index]);
+        sum+=arr[index];
+ }   for(index=0;index<N;index++)
+    {
+        sum-=arr[index];
+        arr[index]=sum;
+    }
+
+ for(index=0;index<N;index++)
+        printf("%d ",arr[index]);
+    return 0;
+}
+
 8.Write a program  to reverse the array elements
+#include<stdio.h>
+int main()
+{
+    int N, start, end, index, temp;
+    scanf("%d",&N);
+    int arr[N];
+    for(index=0;index<N;index++)
+            scanf("%d",&arr[index]);
+     start = 0;
+    end = N - 1;
+    while (start < end) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+  for(index=0;index<N;index++)
+    printf("%d ",arr[index]);
+    return 0;
+}
 9.Write a program  to insert the value at given position in the array.
 10.Write a program  to delete the value at given position from the array.
 11.Write a program  to swap every pair of  adjacent array elements
