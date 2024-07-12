@@ -1,1 +1,32 @@
+#include<stdio.h>
+void sort(int arr[],int noe)
+{
+    int c0=0,c1=0,c2=0;
+    for(int i=0;i<noe;i++)
+    {
+     if(arr[i]==0)
+        c0++;
+     else if(arr[i]==1)
+        c1++;
+     else
+        c2++;
+    }
+    for(int count=0;count<c0;count++)
+    printf("%d ",arr[count]=0);
+    for(int count=c0;count<c0+c1;count++)
+    printf("%d ",arr[count]=1);
+        for(int count=c0+c1;count<noe;count++)
+    printf("%d ",arr[count]=2);
+}
+
+void main()
+{
+int noe;
+scanf("%d ",&noe);
+int arr[noe];
+for(int count=0;count<noe;count++)
+    scanf("%d",&arr[count]);
+sort(arr,noe);
+
+}
 
