@@ -48,41 +48,6 @@ printf("%d",min);
 4.Write a  Program to print all the repeated elements in a sorted array.
 
 
-#include<stdio.h>
-void main()
-{
-int noe;
-scanf("%d ",&noe);
-int arr[noe];
-for(int count=0;count<noe;count++)
-    scanf("%d",&arr[count]);
-
-for(int count=0;count<noe;count++)
-{
-    int isRepeated=0;
-  for (int j = 0; j < count; j++) 
-    {
-        if(arr[count]==arr[j])
-       { isRepeated=1;
-        break;
-        }
-    }
-
-    if(isRepeated)
-        continue;
-  
-    for (int j = count + 1; j < noe; j++) 
-    {
-        if(arr[count]==arr[j])
-        {
-        printf("%d ",arr[count]);
-break;
-}
-    }
-}
-    
-}
-
 5.Write a program to search an element in the given array and print the searched elements index. If no such elements were found print -1
 #include<stdio.h>
 int main(){
