@@ -160,3 +160,25 @@ int main() {
 
 8.last Non repeating
 
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[50],t;
+    int index = 0;
+     fgets(str, sizeof(str), stdin);
+    char alphabets[26] = {0};
+
+    while (str[index] != '\0') {
+            alphabets[tolower(str[index]) - 97]++;
+                index++;
+    }
+
+    for (int i = 0; i < 26; i++) {
+        if (alphabets[str[i]-97]==1) 
+        t=str[i];
+    }
+            
+    printf("%c",t);
+    return 0;
+}
