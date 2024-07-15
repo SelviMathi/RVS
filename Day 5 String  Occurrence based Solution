@@ -67,9 +67,6 @@ int main() {
     return 0;
 }
 
-
-
-
 4.Sort the characters without repetion
 #include <stdio.h>
 #include <ctype.h>
@@ -92,8 +89,31 @@ int main() {
     }
     return 0;
 }
-
 5.1st Repeating
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[50];
+    fgets(str, sizeof(str), stdin);
+    
+    char alphabets[26] = {0};
+    int index = 0;
+    
+    while (str[index] != '\0' && str[index] != '\n') {
+            alphabets[tolower(str[index]) - 97]++;
+            if (alphabets[tolower(str[index]) - 97] > 1) {
+                printf("%c\n", str[index]);
+                break;
+            }
+        
+        index++;
+    }
+
+    return 0;
+}
+
+6.Last Repeating
 #include <stdio.h>
 #include <ctype.h>
 
@@ -115,9 +135,6 @@ int main() {
     }
     return 0;
 }
-6.Last Non repeating
-
-
 7.1st NON Repeating
 #include <stdio.h>
 #include <ctype.h>
