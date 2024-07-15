@@ -44,7 +44,7 @@ int main() {
     return 0;
 }
 
-3.Repeating Chaaracters
+3.Repeating Characters
 #include <stdio.h>
 #include <ctype.h>
 
@@ -93,5 +93,53 @@ int main() {
     return 0;
 }
 
+5.1st Repeating
+#include <stdio.h>
+#include <ctype.h>
 
+int main() {
+    char str[50];
+    int index = 0;
+     fgets(str, sizeof(str), stdin);
+    char alphabets[26] = {0};
+
+    while (str[index] != '\0') {
+            alphabets[tolower(str[index]) - 97]++;
+                index++;
+    }
+
+    for (int i = 0; i < 26; i++) {
+        if (alphabets[i]>1) {
+            printf("%c", i+97);
+        break;}
+    }
+    return 0;
+}
+6.Last Non repeating
+
+
+7.1st NON Repeating
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[50];
+    int index = 0;
+     fgets(str, sizeof(str), stdin);
+    char alphabets[26] = {0};
+
+    while (str[index] != '\0') {
+            alphabets[tolower(str[index]) - 97]++;
+                index++;
+    }
+
+    for (int i = 0; i < 26; i++) {
+        if (alphabets[i]==1) {
+            printf("%c", i+97);
+        break;}
+    }
+    return 0;
+}
+
+8.last Non repeating
 
