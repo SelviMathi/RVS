@@ -1,1 +1,207 @@
+ROUND 1 : Aptitude, Logical Reasoning and Technical questions(MCQ’s) – 90 mins
+(3 Sections - Each Section 30 mins)
+Questions from:
+1. Aptitude: Time and Work, Profit Loss, Train, Race and Game (10 Qns)
+2. Logical Reasoning: Find Odd one out in Figures, Find Next Figure (10 Qns)
+3. Technical: Basic C Sharp Qns(Conditional Statement, Loop Based Output Qns) and C++ OOPS Qns
+and HashMap related one qn. (10 Qns)
+ROUND 2 :
+
+Coding Round – I (60 mins)
+Given a positive number(N), print whether it is valid or not based on Conditions with ‘a’ value.
+G = N - (a)^ 2,where a € ( 1 to sqrt(N) )
+K^k = G , where k is positive number
+Input: 13
+Output: Valid – 3
+Explanation:
+If a=1, G = 13 – (1)^2 = 12
+1^1 = 1 != 12
+2^2 = 4 != 12
+3^3 = 27 != 12 so K
+k goes beyond G, we need to terminate.
+If a=2, G = 13 – (2)^2 = 9
+1^1 = 1 != 9
+2^2 = 4 != 9
+3^3 = 27 != 9 so K
+k goes beyond G, we need to terminate.
+If a=3, G = 13 – (3)^2 = 4
+1^1 = 1 != 4
+2^2 = 4 == 4
+Input: 60
+Output: Invalid
+
+++++++++++++++++++Solution+++++++++++++++++
+
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+// Function to check if k^k equals G
+bool isKthPowerEqualToG(int G) {
+    int k = 1;
+    while (true) {
+        int power = 1;
+        for (int i = 0; i < k; i++) {
+            power *= k;
+            if (power > G) return false; // If k^k exceeds G, no need to continue
+        }
+        if (power == G) return true;
+        k++;
+    }
+    return false;
+}
+
+// Function to determine if N is valid
+bool isValidNumber(int N) {
+    int sqrtN = (int)sqrt(N);
+    for (int a = 1; a <= sqrtN; a++) {
+        int G = N - a * a;
+        if (isKthPowerEqualToG(G)) {
+            printf("Valid - %d\n", a);
+            return true;
+        }
+    }
+    printf("Invalid\n");
+    return false;
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+    printf("Input: %d\nOutput: ", N);
+    isValidNumber(N);
+
+    return 0;
+}
+
+You’re given intervals with values, and the output should be Merged and the value should be added until
+the user gives “No” as input. And the output should be displayed for every time, I enter the input values
+Inputs:
+Do you want to enter values? : Yes
+Start: 1
+End: 10
+Value: 3
+1 10 3
+Do you want to enter values? : Yes
+Start: 20
+End: 30
+Value: 9
+1 10 3
+20 30 9
+Do you want to enter values? : Yes
+Start: 25
+End: 35
+Value: 8
+1 10 3
+20 35 17
+Do you want to enter values? : Yes
+Start: 5
+End: 30
+Value: 10
+1 35 30
+Do you want to enter values? : No
+
+
+
++++++SOlution++++
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to sort intervals based on their start time
+void sortIntervals(int intervals[][3], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (intervals[j][0] > intervals[j + 1][0]) {
+                // Swap the intervals
+                int tempStart = intervals[j][0];
+                int tempEnd = intervals[j][1];
+                int tempValue = intervals[j][2];
+                intervals[j][0] = intervals[j + 1][0];
+                intervals[j][1] = intervals[j + 1][1];
+                intervals[j][2] = intervals[j + 1][2];
+                intervals[j + 1][0] = tempStart;
+                intervals[j + 1][1] = tempEnd;
+                intervals[j + 1][2] = tempValue;
+            }
+        }
+    }
+}
+
+// Function to merge intervals
+void mergeIntervals(int intervals[][3], int intervalsSize, int merged[][3], int* returnSize) {
+    if (intervalsSize == 0) {
+        *returnSize = 0;
+        return;
+    }
+
+    // Sort the intervals based on their start times
+    sortIntervals(intervals, intervalsSize);
+
+    // Initialize the merged array
+    int mergedIndex = 0;
+    merged[0][0] = intervals[0][0];
+    merged[0][1] = intervals[0][1];
+    merged[0][2] = intervals[0][2];
+
+    for (int i = 1; i < intervalsSize; i++) {
+        // If the current interval overlaps with the previous one, merge them
+        if (intervals[i][0] <= merged[mergedIndex][1]) {
+            if (intervals[i][1] > merged[mergedIndex][1]) {
+                merged[mergedIndex][1] = intervals[i][1];
+            }
+            merged[mergedIndex][2] += intervals[i][2];
+        } else {
+            // Otherwise, add the current interval to the merged array
+            mergedIndex++;
+            merged[mergedIndex][0] = intervals[i][0];
+            merged[mergedIndex][1] = intervals[i][1];
+            merged[mergedIndex][2] = intervals[i][2];
+        }
+    }
+
+    *returnSize = mergedIndex + 1;
+}
+
+int main() {
+    // Array to hold intervals
+    int intervals[100][3];
+    int intervalsSize = 0;
+
+    while (1) {
+        char response[4];
+        printf("Do you want to enter Value? (yes/no): ");
+        scanf("%s", response);
+
+        if (strcmp(response, "no") == 0) {
+            break;
+        }
+
+        printf("Start: ");
+        scanf("%d", &intervals[intervalsSize][0]);
+        printf("End: ");
+        scanf("%d", &intervals[intervalsSize][1]);
+        printf("Value: ");
+        scanf("%d", &intervals[intervalsSize][2]);
+        intervalsSize++;
+
+
+        int merged[10][3];
+        int returnSize;
+        mergeIntervals(intervals, intervalsSize, merged, &returnSize);
+
+            for (int i = 0; i < returnSize; i++) {
+            printf("%d %d %d\n", merged[i][0], merged[i][1], merged[i][2]);
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
 
