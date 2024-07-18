@@ -32,7 +32,41 @@ Input: 60
 Output: Invalid
 
 ++++++++++++++++++Solution in C +++++++++++++++++
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int n,k,a,g,flag=0,store;
+    scanf("%d",&n);
+    a=(int) sqrt(n);
+    for(int i=1;i<=a;i++)
+    {
+        g=n-(i*i);
+        for(k=1;k<=g;k++)
+        {
+            if(pow(k,k)==g)
+            {
+                flag=1;
+                store=a;
+            }
+        }
+    }
+    if(flag==1)
+    {
+        printf("valid-%d",store);
+    }
+    else
+    {
+         printf("invalid");
+    }
+    
+    return 0;
+} 
 
+
+
+
+(OR ) with functions
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
