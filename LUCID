@@ -13,7 +13,6 @@ G = N - (a)^ 2,where a € ( 1 to sqrt(N) )
 K^k = G , where k is positive number
 Input: 13
 Output: Valid – 3
-Explanation:
 If a=1, G = 13 – (1)^2 = 12
 1^1 = 1 != 12
 2^2 = 4 != 12
@@ -27,10 +26,12 @@ k goes beyond G, we need to terminate.
 If a=3, G = 13 – (3)^2 = 4
 1^1 = 1 != 4
 2^2 = 4 == 4
+
+
 Input: 60
 Output: Invalid
 
-++++++++++++++++++Solution+++++++++++++++++
+++++++++++++++++++Solution in C +++++++++++++++++
 
 #include <stdio.h>
 #include <math.h>
@@ -73,6 +74,23 @@ int main() {
 
     return 0;
 }
+++++++++++++++ Solution in Python +++++++++
+import math
+
+n = int(input())
+a = math.floor(math.sqrt(n))
+flag = 0
+for i in range(1,a+1):
+  g = n - (i**2)
+  k=1
+  while((k**k) <= g ):
+    if k**k == g:
+      flag = 1
+      break
+    k+=1
+print(f"Valid-{a}" if flag==1 else "Invalid")
+
+
 
 You’re given intervals with values, and the output should be Merged and the value should be added until
 the user gives “No” as input. And the output should be displayed for every time, I enter the input values
