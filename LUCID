@@ -166,20 +166,15 @@ void sortIntervals(int intervals[][3], int size) {
         for (int j = 0; j < size - i - 1; j++) {
             if (intervals[j][0] > intervals[j + 1][0]) {
                 // Swap the intervals
-                int tempStart = intervals[j][0];
-                int tempEnd = intervals[j][1];
-                int tempValue = intervals[j][2];
-                intervals[j][0] = intervals[j + 1][0];
-                intervals[j][1] = intervals[j + 1][1];
-                intervals[j][2] = intervals[j + 1][2];
-                intervals[j + 1][0] = tempStart;
-                intervals[j + 1][1] = tempEnd;
-                intervals[j + 1][2] = tempValue;
+                for (int k = 0; k < 3; k++) {
+                    int temp = intervals[j][k];
+                    intervals[j][k] = intervals[j + 1][k];
+                    intervals[j + 1][k] = temp;
+                }
             }
         }
     }
 }
-
 // Function to merge intervals
 void mergeIntervals(int intervals[][3], int intervalsSize, int merged[][3], int* returnSize) {
     if (intervalsSize == 0) {
