@@ -1,0 +1,102 @@
+#include<stdio.h>
+#include<malloc.h>
+struct node
+{
+int data;
+struct node*prev;
+struct node*next;
+}NODE;
+
+typedef struct node* NODEPTR;
+
+NODEPTR newnode,tptr,start,end;
+
+void insertNode(int num)
+{
+ newnode=(NODEPTR)malloc(sizeof(NODE));
+
+ newnode->prev=NULL;
+ newnode->data=num;
+ newnode->next=NULL;
+
+ if(start==NULL)
+    {
+        start=end=newnode;
+    }
+    else
+    {
+
+     newnode->prev=end;
+     end->next=newnode;
+     end=newnode;
+    }
+}
+
+void displayForward()
+{
+    for(tptr=start;tptr;tptr=tptr->next)
+        printf("%d ",tptr->data);
+}
+
+void displayBackward()
+{
+    for(tptr=end;tptr;tptr=tptr->prev)
+        printf("%d ",tptr->data);
+}
+
+void deleteNode(int num)
+{
+
+            if(start==NULL)
+                return ;
+            else
+            {
+            for(tptr=start;tptr&&tptr->data!=num;tptr=tptr->next);
+            if(tptr==start)
+            {
+                start->next->prev=start->prev;
+                start=start->next;
+                free(tptr);
+            }
+            else if(tptr==end)
+            {
+                end->prev->next=end->next;
+                end=end->prev;
+                free(tptr);
+            }
+            else
+            {
+                tptr->prev->next=tptr->next;
+                tptr->next->prev =tptr->prev;
+                free(tptr);
+            }
+            }
+
+}
+void searchNode(int num)
+{
+    for(tptr=start;tptr && tptr->data != num;tptr=tptr->next);
+            if(tptr == NULL)
+            printf("\nNot Found");
+            else
+            printf("\nFound");
+}
+
+void main()
+{
+    int arr[]={10,50,70,90};
+    int noe,index;
+    noe=sizeof(arr)/sizeof(arr[0]);
+    for(index=0;index<noe;index++)
+    {
+        insertNode(arr[index]);
+    }
+    displayForward();
+    printf("\n");
+    displayBackward();
+    deleteNode(70);
+    printf("\n");
+    displayForward();
+    searchNode(70);
+
+}
