@@ -1,0 +1,9 @@
+void searchNode(int num)
+{
+    for(tptr=start;tptr && tptr->data != num;tptr=tptr->next);
+            if(tptr == NULL)
+            printf("\nNot Found");
+            else
+            printf("\nFound");
+}
+
