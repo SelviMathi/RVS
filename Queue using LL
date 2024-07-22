@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<malloc.h>
+typedef struct queue
+{
+    int data;
+    struct queue* next;
+}QUEUE;
+typedef struct queue* QUPTR;
+QUPTR front,rear,newnode,tptr,safe;
+void enqueue(int num)
+{
+    newnode=(QUPTR)malloc(sizeof(QUEUE));
+    newnode->data=num;
+    newnode->next=NULL;
+    if(front==NULL){
+        front=newnode;
+        rear=newnode;
+    }
+    else
+    {
+       rear->next = newnode;
+        rear = newnode;
+    }
+}
+int dequeue()
+{
+    int temp;
+    if(front==NULL)
+        return 0;
+    else
+    {
+        temp=front->data;
+        safe=front;
+        front=front->next;
+        free(safe);
+        return temp;
+    }
+}
+void display()
+{
+    tptr=front;
+    while(tptr)
+    {
+        printf("%d ",tptr->data);
+        tptr=tptr->next;
+    }
+}
+int main()
+{
+
+    int arr[]={10,20,30,40,50,60,70,80,90,100};
+    int num,noe,index;
+    noe=sizeof(arr)/sizeof(int);
+    for(index=0;index<noe;index++)
+        enqueue(arr[index]);
+    display();
+    num=dequeue();
+    printf("\n");
+    printf("%d dequed element",num);
+    printf("\n");
+    display();
+    return 0;
+}
