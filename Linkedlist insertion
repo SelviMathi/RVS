@@ -43,4 +43,5 @@ int N,ind;
         scanf("%d",&arr[ind]);
 
     for(ind=0;ind<N;ind++)
-        insertNode(arr[ind]);*/
+        insert(arr[ind]);
+display();*/
