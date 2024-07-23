@@ -1,1 +1,49 @@
+#include <stdio.h>
+
+#define SIZE 3
+int queue[SIZE];
+int front = -1, rear = -1;
+
+void enqueue(int num)  
+{  
+    if (rear == SIZE - 1)  
+        printf("\nOVERFLOW\n");  
+    else   
+    {  
+        if (front == -1) front = 0;  // Initialize front if it's the first element
+        rear = rear + 1;  
+        queue[rear] = num;  
+    }  
+}
+
+void dequeue()  
+{  
+    if (front == -1 || front > rear)  
+        printf("\nUNDERFLOW\n");  
+    else  
+    {  
+        int temp = queue[front];  
+        front = front + 1;  
+        printf("\nValue deleted: %d\n", temp);  
+    }  
+}  
+      
+void display()  
+{  
+        for (int i = front; i <= rear; i++)  
+            printf("%d\n", queue[i]);  
+    
+}  
+
+int main()
+{
+    enqueue(20);
+    enqueue(10);
+    enqueue(5);
+    display();
+    dequeue();
+    display();
+
+    return 0;
+}
 
