@@ -50,3 +50,92 @@ else
 printf("\nFalse");
 return 0;
 }
+
+
+Creating cycle manually
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+    int data;
+    struct node *next;
+} NODE;
+
+NODE *start = NULL;
+
+void insert(int num) {
+    NODE *newnode = (NODE *)malloc(sizeof(NODE));
+    newnode->data = num;
+    newnode->next = NULL;
+    
+    if (start == NULL) {
+        start = newnode;
+    } else {
+        NODE *tptr = start;
+        while (tptr->next != NULL) {
+            tptr = tptr->next;
+        }
+        tptr->next = newnode;
+    }
+}
+
+int loopofLL() {
+    NODE *fast = start;
+    NODE *slow = start;
+    
+    while (slow != NULL && fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void createCycle(int index) {
+    if (index < 0) return;
+
+    NODE *tptr = start;
+    NODE *cycleNode = NULL;
+    int count = 0;
+
+    while (tptr->next != NULL) {
+        if (count == index) {
+            cycleNode = tptr;
+        }
+        tptr = tptr->next;
+        count++;
+    }
+
+    if (cycleNode != NULL) {
+        tptr->next = cycleNode;
+    }
+}
+
+int main() {
+    int n, num, cycleIndex;
+
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    printf("Enter the nodes:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &num);
+        insert(num);
+    }
+
+    printf("Enter the index to form a cycle (-1 if no cycle): ");
+    scanf("%d", &cycleIndex);
+
+    createCycle(cycleIndex);
+
+    if (loopofLL()) {
+        printf("\nTrue\n");
+    } else {
+        printf("\nFalse\n");
+    }
+
+    return 0;
+}
