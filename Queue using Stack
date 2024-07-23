@@ -1,0 +1,72 @@
+#define MAX 5
+#include<stdio.h>
+int S1[MAX],S2[MAX],top1=-1,top2=-1,count=0;
+void push1(int data)
+{
+if (top1==MAX-1)
+    printf("FULL");
+else
+//top1++;
+S1[++top1]=data;
+}
+
+void push2(int data)
+{
+if (top2==MAX-1)
+    printf("FULL");
+else
+//top2++;
+S2[++top2]=data;
+}
+int pop1()
+{
+    return S1[top1--];
+}
+int pop2()
+{
+    return S2[top2--];
+}
+void enqueue(int num)
+{
+push1(num);
+count++;
+}
+void dequeue()
+{
+if(top1==-1 && top2==-1)
+printf("Empty");
+else
+{
+    for(int i=0;i<count;i++)
+{
+    int a=pop1();
+    push2(a);
+
+}
+int  b=pop2();
+printf("Dequeued element %d\n",b);
+count--;
+for(int i=0;i<count;i++)
+{
+    int a=pop2();
+    push1(a);
+
+}
+}
+}
+
+void display()
+{
+    for(int i=0;i<=top1;i++)
+    printf("%d ",S1[i]);
+}
+void main()
+{
+    enqueue(5);
+    enqueue(2);
+    enqueue(1);
+    dequeue();
+    enqueue(7);
+    display();
+    
+}
