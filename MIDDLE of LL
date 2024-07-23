@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<malloc.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+}NODE;
+NODE *newnode,*tptr,*shadow,*start=NULL;
+void insert(int num)
+{
+newnode=(NODE*)malloc(sizeof(NODE));
+newnode->data = num;
+newnode->next = NULL;
+for(tptr=start;tptr;shadow=tptr,tptr=tptr->next);
+    if(tptr==start)
+{
+    newnode->next=start;
+    start=newnode;
+}
+else
+{
+    newnode->next=shadow->next;
+    shadow->next=newnode;
+}
+}
+void display()
+{
+    for(tptr=start;tptr;tptr=tptr->next)
+        printf("%d ",tptr->data);
+}
+void middleofLL()
+{
+    NODE *fast=start;
+    NODE *slow=start;
+    while(fast !=NULL && fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    printf("\n%d",slow->data);
+}
+int main()
+{
+insert(20);
+insert(10);
+insert(30);
+insert(5);
+//insert(50);
+display();
+middleofLL();
+return 0;
+}
