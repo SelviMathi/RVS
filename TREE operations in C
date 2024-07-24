@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define max(a,b) (a)>(b)?(a):(b)
+
+typedef struct node {
+    int data;
+    struct node *left, *right;
+} NODE;
+
+// Function to create a new node
+NODE* createNode(int data) {
+    NODE* newNode = (NODE*) malloc(sizeof(NODE));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
+// Function to insert a new node at the correct position in the BST
+NODE* insert(NODE* node, int data) {
+    if (node == NULL)
+        return createNode(data);
+    if (data < node->data) 
+        node->left = insert(node->left, data);
+    else if (data > node->data)
+        node->right = insert(node->right, data);
+    
+    return node;
+}
+
+// Function to perform preorder traversal of the tree
+void preorderdisplay(NODE* node) {
+    if (node != NULL) {
+        printf("%d ", node->data);
+        preorderdisplay(node->left);
+        preorderdisplay(node->right);
+    }
+}
+void Inorderdisplay(NODE* node) {
+    if (node != NULL) {
+        Inorderdisplay(node->left);
+        printf("%d ", node->data);
+        Inorderdisplay(node->right);
+    }
+}
+void Postorderdisplay(NODE* node) {
+    if (node != NULL) {
+        Postorderdisplay(node->left);
+        Postorderdisplay(node->right);
+        printf("%d ", node->data);
+    }
+}
+int Findheight(NODE *node)
+    {
+        if(node == NULL)
+        return -1;
+        return max(Findheight(node->left),Findheight(node->right))+1;
+    }
+
+int FindMin(NODE *node)
+{
+    if(node==NULL)
+    return -1;
+    else
+    {while(node->left!=NULL)
+    node=node->left;
+    }return node->data;
+}
+int FindMax(NODE *node)
+{
+    if(node==NULL)
+    return -1;
+    else
+    {while(node->right!=NULL)
+    node=node->right;
+    }return node->data;
+}
+int main() {
+    /* What our binary search tree looks like really 
+          9 
+         / \ 
+        7  14
+       / \ / \ 
+      6  8 11 16 */
+
+    NODE* root = NULL;
+    root = insert(root, 9);
+    insert(root, 7);
+    insert(root, 6);
+    insert(root, 8);
+    insert(root, 14);
+    insert(root, 11);
+    insert(root, 16);
+   
+    printf("The preorder is :\n");
+    preorderdisplay(root);
+    printf("\nThe Inorder is :\n");
+    Inorderdisplay(root);
+    printf("\nThe Postorder is :\n");
+    Postorderdisplay(root);
+    printf("\nHeight of tree: %d",Findheight(root));
+    printf("\nMin of tree: %d",FindMin(root));
+    printf("\nMax of tree: %d",FindMax(root));
+     return 0;
+}
