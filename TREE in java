@@ -1,0 +1,58 @@
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int num) {
+        data = num;
+        left = right = null;
+    }
+}
+
+class BinarySTree {
+    Node root;
+
+    void insert(int num) {
+        root = insertRec(root, num);
+    }
+
+    Node insertRec(Node root, int num) {
+        if (root == null) {
+            root = new Node(num);
+            return root;
+        }
+
+        if (num < root.data)
+            root.left = insertRec(root.left, num);
+        else if (num > root.data)
+            root.right = insertRec(root.right, num);
+
+        return root;
+    }
+
+    void display() {
+        displayRec(root);
+    }
+
+    void displayRec(Node root) {
+        if (root != null) {
+            System.out.print(root.data + " ");
+            displayRec(root.left);
+            displayRec(root.right);
+        }
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        BinarySTree obj = new BinarySTree();
+        obj.insert(8);
+        obj.insert(7);
+        obj.insert(12);
+        obj.insert(15);
+        obj.insert(2);
+        obj.insert(5);
+        obj.display();
+    }
+}
+
+
