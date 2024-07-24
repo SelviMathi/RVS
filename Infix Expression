@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <math.h>
+
+#define CAPACITY 100
+
+int stack[CAPACITY];
+char operatorStack[CAPACITY];
+int top = -1;
+int operatorTop = -1;
+
+void push(int num) {
+    if (top == CAPACITY - 1) {
+        printf("Stack is full\n");
+    } else {
+        stack[++top] = num;
+    }
+}
+
+int pop() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+        return -1;
+    } else {
+        return stack[top--];
+    }
+}
+
+void pushOperator(char op) {
+    if (operatorTop == CAPACITY - 1) {
+        printf("Operator stack is full\n");
+    } else {
+        operatorStack[++operatorTop] = op;
+    }
+}
+
+char popOperator() {
+    if (operatorTop == -1) {
+        printf("Operator stack is empty\n");
+        return '\0';
+    } else {
+        return operatorStack[operatorTop--];
+    }
+}
+
+int precedence(char op) {
+    switch (op) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+            return 2;
+        case '^':
+            return 3;
+        default:
+            return 0;
+    }
+}
+
+int applyOperator(int a, int b, char op) {
+    switch (op) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return a / b;
+        case '^': return (int)pow(a, b);
+        default: return 0;
+    }
+}
+
+int infix(char *expression) {
+    int length = strlen(expression);
+    if (expression[length - 1] == '\n') {
+        expression[length - 1] = '\0';
+    }
+    for (int i = 0; i < length; i++) {
+        char ch = expression[i];
+        if (isdigit(ch)) {
+            push(ch - '0'); // Push single-digit number
+        } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^') {
+            while (operatorTop != -1 && precedence(operatorStack[operatorTop]) >= precedence(ch)) {
+                char op = popOperator();
+                int b = pop();
+                int a = pop();
+                push(applyOperator(a, b, op));
+            }
+            pushOperator(ch);
+        }
+    }
+
+    while (operatorTop != -1) {
+        char op = popOperator();
+        int b = pop();
+        int a = pop();
+        push(applyOperator(a, b, op));
+    }
+
+    return pop();
+}
+
+int main() {
+    char expression[100];
+    fgets(expression, sizeof(expression), stdin);
+    printf("%d\n", infix(expression));
+    return 0;
+}
